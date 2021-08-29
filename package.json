@@ -1,0 +1,21 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss sass/styles.scss css/styles.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "author": "Octavio Seiner",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.7"
+  },
+  "description": "Pagina web sobre Acopalipsis barras Mobiles",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "tone": "^14.8.26"
+  }
+}

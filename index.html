@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="imagenes/fadersrojo.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js" integrity="sha512-+esjJ8NSEfoB5Sr8R7jTcYxCR1Bd6q9C+WQC0JA2UXVPT8Mlo/TJqqyp0qeeoxFzkAaa8t6tZCHLGmw3oNI2Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Proyecto Final Javascript</title>
+</head>
+<body>    
+
+    <header>            
+        <div id="h1">
+            <h1>Demo Design</h1>
+        </div>
+
+        <div>
+            <section class="metrónomo">
+                <label for="bpm">BPM</label>
+                <input name="bpm" id="bpm" class="slider sliderMain" type="range" min="60" max="220" value="120" step="1" />
+                <span id="bpmval">120</span>
+            </section>
+    
+            <section class="gain">
+                <label for="gain">Gain</label>
+                <input name="gain" id="gain" class="slider sliderMain" type="range" min="0" max="1" value="1" step="0.1" />
+                <span id="gainval">1</span>
+            </section>
+    
+            <section id="playStop">
+                <input type="submit" class="marginL boton buttonAnim" name="envio" value="Aplicar" id="enviarPar">
+                <button id="botonPlay" class="boton buttonAnim" data-playing="false">Play</button>
+                <button id="botonResetAll" class="boton buttonAnim" data-playing="false">Reset All</button>
+                <button id="botonClearAll" class="boton buttonAnim" data-playing="false">Clear All</button>
+            </section>
+        </div>
+
+        <div>
+            <section id="repro"> </section>
+        </div>
+    </header>
+
+    <main>
+        <section id="drums">
+            <div class="padding">
+                <div>
+                    <section class="volDrums">
+                        <h2>Drums</h2>
+                        <div>
+                            <label for="volDrums">Vol.</label>
+                            <input name="volDrums" class="slider sliderDrums" id="volDrums" type="range" min="-20" max="20" value="1" step="1">
+                            <span id="volDrumsVal">1</span>
+                        </div>
+                        <div>
+                            <label for="revDrums">Reverb</label>
+                            <input name="revDrums"class="slider sliderDrums" id="revDrums" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="revDrumsVal">0</span>
+                        </div>
+                        <div>
+                            <label for="delayDrums">Delay</label>
+                            <input name="delayDrums"class="slider sliderDrums" id="delayDrums" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="delayDrumsVal">0</span>
+                        </div>
+                        <div>
+                            <input type="submit" class="botonDrums buttonAnim" name="envio" value="Aplicar" id="enviarParDrums">
+                            <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
+                            <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        Crash
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px"  type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px"  type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        HH open
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        HH close
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Clap
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Snap
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Snare B
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Snare A
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Kick
+                    </p>
+                    <div>
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" style="margin-right: 21px" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                        <input class="inputDrums" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bass">
+            <div class="padding">
+                <div>
+                    <section class="volBass">
+                        <h2>Bass</h2>
+                        <div>
+                            <label for="volBass">Vol.</label>
+                            <input name="volBass" class="slider sliderBass" id="volBass" type="range" min="-20" max="20" value="1" step="1">
+                            <span id="volBassVal">1</span>
+                        </div>
+                        <div>
+                            <label for="revBass">Reverb</label>
+                            <input name="revBass"class="slider sliderBass" id="revBass" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="revBassVal">0</span>
+                        </div>
+                        <div>
+                            <label for="delayBass">Delay</label>
+                            <input name="delayBass"class="slider sliderBass" id="delayBass" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="delayBassVal">0</span>
+                        </div>
+                        <div>
+                            <input type="submit" class="botonBass buttonAnim" name="envio" value="Aplicar" id="enviarParBass">
+                            <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
+                            <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        DO
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        RE
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        MI
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        FA
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SOL
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        LA
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SI
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        DO
+                    </p>
+                    <div>
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass marginR" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                        <input class="inputBass" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+        <section id="synth">
+            <div class="padding">
+                <div>
+                    <section class="volSynth">
+                        <h2>Synth</h2>
+                        <div>
+                            <label for="volSynth">Vol.</label>
+                            <input name="volSynth"class="slider sliderSynth" id="volSynth" type="range" min="-20" max="20" value="1" step="1">
+                            <span id="volSynthVal">1</span>
+                        </div>
+                        <div>
+                            <label for="revSynth">Reverb</label>
+                            <input name="revSynth"class="slider sliderSynth" id="revSynth" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="revSynthVal">0</span>
+                        </div>
+                        <div>
+                            <label for="delaySynth">Delay</label>
+                            <input name="delaySynth"class="slider sliderSynth" id="delaySynth" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="delaySynthVal">0</span>
+                        </div>
+                        <div>
+                            <input type="submit" class="botonSynth buttonAnim" name="envio" value="Aplicar" id="enviarParSynth">
+                            <button id="muteSynth" class="botonSynth buttonAnim" data-playing="false">Mute</button>
+                            <button id="botonClearSynth" class="botonSynth buttonAnim" data-playing="false">Clear</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>
+                        DO
+                    </p>
+                    <div>             
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        RE
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        MI
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        FA
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SOL
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        LA
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SI
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        DO
+                    </p>
+                    <div>
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth marginR" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                        <input class="inputSynth" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chords">
+            <div class="padding">
+                <div>
+                    <section class="volChords">
+                        <h2>Chords</h2>
+                        <div>
+                            <label for="volChords">Vol.</label>
+                            <input name="volChords" class="slider sliderChords" id="volChords" type="range" min="-20" max="20" value="1" step="1">
+                            <span id="volChordsVal">1</span>
+                        </div>
+                        <div>
+                            <label for="revChords">Reverb</label>
+                            <input name="revChords"class="slider sliderChords" id="revChords" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="revChordsVal">0</span>
+                        </div>
+                        <div>
+                            <label for="delayChords">Delay</label>
+                            <input name="delayChords"class="slider sliderChords" id="delayChords" type="range" min="0" max="1" value="0" step="0.1">
+                            <span id="delayChordsVal">0</span>
+                        </div>
+                        <div>
+                            <input type="submit" class="botonChords buttonAnim" name="envio" value="Aplicar" id="enviarParChords">
+                            <button id="muteChords" class="botonChords buttonAnim" data-playing="false">Mute</button>
+                            <button id="botonClearChords" class="botonChords buttonAnim" data-playing="false">Clear</button>
+                        </div>
+                </div>
+            </div>
+            
+            <div>
+                <div>
+                    <p>
+                        DO Mayor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        RE menor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        MI menor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        FA Mayor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SOL Mayor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        LA menor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        SI men.-5
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        DO Mayor
+                    </p>
+                    <div>
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords marginR" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                        <input class="inputChords" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by: <a href="https://github.com/octaseiner"  target="blanc">Octavio Seiner.</a></p>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/parametros.js"></script>
+<!--     <script src="js/drums.js"></script> -->
+    <script src="js/bass.js"></script>
+    <script src="js/synth.js"></script>
+    <script src="js/chords.js"></script>
+
+</body>
+</html>
