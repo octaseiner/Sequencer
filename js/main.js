@@ -46,7 +46,20 @@ $("#botonClearAll").on('click', function () {
 
 
 
+/* SHOW SCALE */
+const urlJSON = "data/datos.json"
 
+$("#repro").append('<button id="json" class="boton buttonAnim" data-playing="false">Show escale</button>');
+
+
+$("#json").on("click",function () {  
+    $.getJSON(urlJSON, function (data) {
+        $("#repro").prepend(`<div style="color: snow" >
+                                <p>Escale: ${data.escale}</p>
+                                <p>Notes: ${data.notes}</p>
+                            </div>`);
+    });
+});
 
 
 
