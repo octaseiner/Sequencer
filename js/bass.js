@@ -130,7 +130,7 @@ $("#botonClearBass").on('click', function () {
 
 /* FUNCION DEL LOOP */
 function repeatBass(time) {
-let stepBass = indexBass % 16;
+let stepBass = indexBass % 32;
     for (let i = 0; i < $rowsBass.length; i++) {
         let bajo = bajos[i],
             noteBass = notesBass[i],

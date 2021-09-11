@@ -132,7 +132,7 @@ $("#botonClearSynth").on('click', function () {
 
 /* FUNCION DEL LOOP */
 function repeatSynth(time) {
-    let stepSynth = indexSynth % 16;
+    let stepSynth = indexSynth % 32;
     for (let i = 0; i < $rowsSynth.length; i++) {
         let synth = synths[i],
             noteSynth = notesSynth[i],

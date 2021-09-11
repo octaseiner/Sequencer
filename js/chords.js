@@ -133,7 +133,7 @@ $("#botonClearChords").on('click', function () {
 
 /* FUNCION DEL LOOP */
 function repeatChords(time) {
-let stepChords = indexChords % 16;
+let stepChords = indexChords % 32;
     for (let i = 0; i < $rowsChords.length; i++) {
         let acorde = acordes[i],
             noteChords = notesChords[i],

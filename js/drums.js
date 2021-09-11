@@ -1,26 +1,28 @@
 /* DRUMS */
 
 
+
 /* CREO ARRAY DE DRUMS CON 8 CUERPOS Y ASIGNO SONIDO */
 const drums = [
-    new Tone.Sampler({"crash" : "crash.mp3", }),
-    new Tone.Sampler({"hho" : "HHo.mp3",}),
-    new Tone.Sampler({"hhc" : "HHc.mp3",}),
-    new Tone.Sampler({"snap" : "snap.mp3",}),
-    new Tone.Sampler({"clap" : "clap.mp3",}),
-    new Tone.Sampler({"snareb" : "snareB.mp3",}),
-    new Tone.Sampler({"snarea" : "snareA.mp3",}),
-    new Tone.Sampler({"kick" : "kick.mp3",}),
-];
+    new Tone.Player("./audios/crash.mp3"),
+    new Tone.Player("./audios/HHo.mp3"),
+    new Tone.Player("./audios/HHc.mp3"),
+    new Tone.Player("./audios/snap.mp3"),
+    new Tone.Player("./audios/clap.mp3"),
+    new Tone.Player("./audios/snareB.mp3"),
+    new Tone.Player("./audios/snareA.mp3"),
+    new Tone.Player("./audios/kick.mp3")
+]
+
+
+
 
 
 /*  CUANTO QUIERO QUE DURE CADA NOTA */
-Tone.Transport.scheduleRepeat(repeatDrums,'8n');
+Tone.Transport.scheduleRepeat(repeatDrums,'4n');
 
 /* ASIGNO NOTAS A LOS INPUTS = ARRAY */
-const $rowsDrums = document.body.querySelectorAll('section#Drums > div > div > div'),
-    notesDrums = [['C4','E4','G4'], ['D4','F4','A4'], ['E4','G4','B4'],['F4','A4','C5'], ['G4','B4','D5'], ['A4','C5','E5'],['B5','D5','F5'],['C5','E5','G5']];
-
+const $rowsDrums = document.body.querySelectorAll('section#drums > div > div > div');
 let indexDrums = 0;
 
 
@@ -95,7 +97,6 @@ drums.forEach(drums => drums.chain(drumsDelay, drumsRev));
 
 
 
-
 /* ESTABLECE PARAMETROS */
 $("#enviarParDrums").on("click", function (e) {
     e.preventDefault();
@@ -123,16 +124,20 @@ $("#botonClearDrums").on('click', function () {
 
 
 
+
+
+
 /* FUNCION DEL LOOP */
 function repeatDrums(time) {
-let stepDrums = indexDrums % 16;
+let stepDrums = indexDrums % 32;
     for (let i = 0; i < $rowsDrums.length; i++) {
         let drum = drums[i],
-            noteDrums = notesDrums[i],
             $row = $rowsDrums[i],
             $input = $row.querySelector(`input:nth-child(${stepDrums + 1})`);
-        if ($input.checked) drum.triggerAttackRelease(noteDrums, '4n', time);
+        if ($input.checked) drum.start(time);;
     }
+
     indexDrums++;
+    drums.autostart = true;
 } 
 

@@ -15,6 +15,7 @@ const play = document.querySelector('#botonPlay');
 let bool = false;
 
 $("#botonPlay").on("click", function () {
+
     bool = !bool;
 
     if (bool == true) {
@@ -42,6 +43,26 @@ $("#botonClearAll").on('click', function () {
     document.querySelectorAll('input[type="checkbox"]')
     .forEach(inputCheck => inputCheck.checked = false);
 });
+
+
+
+// /* RESET ALL */
+// $("#botonResetAll").on("click", function() {
+
+//     /* CLEAR ALL */
+//     document.querySelectorAll('input[type="checkbox"]')
+//     .forEach(inputCheck => inputCheck.checked = false);
+
+//     /* BPM */
+//     tempo = document.querySelector("#bpm").value;
+//     Tone.Transport.bpm.value = 120;
+//     bpmValor.innerText = 120;
+
+//     /* GAIN GENERAL */
+//     ganancia = parseFloat(document.querySelector("#gain").value);
+//     gain.gain.rampTo(1);
+//     gainValor.innerText = 1;
+// });
 
 
 

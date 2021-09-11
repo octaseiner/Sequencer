@@ -15,7 +15,7 @@ bpmControl.addEventListener('input', function(e) {
 /* GANANCIA */
 /* CREO GANANCIA Y LA CONECTO A DESTINATION  */
 let ganancia;
-let gain = new Tone.Gain(1).toDestination();;
+let gain = new Tone.Gain(1).toDestination();
 
 const gainControl = document.querySelector('#gain');
 const gainValor = document.querySelector('#gainval');
