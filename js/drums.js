@@ -37,11 +37,11 @@ $("#toogleDrums").on("click", function () {
     boolToogleDrums = !boolToogleDrums;
 
     if (boolToogleDrums == true) {
-        toogleDrums.innerText = "▼";
+        toogleDrums.innerText = "▲";
     }
 
     else if (boolToogleDrums == false) {
-        toogleDrums.innerText = "▲";
+        toogleDrums.innerText = "▼";
     }   
 })
 

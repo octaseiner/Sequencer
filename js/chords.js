@@ -37,11 +37,11 @@ $("#toogleChords").on("click", function () {
     boolToogleChords = !boolToogleChords;
 
     if (boolToogleChords == true) {
-        toogleChords.innerText = "▼";
+        toogleChords.innerText = "▲";
     }
 
     else if (boolToogleChords == false) {
-        toogleChords.innerText = "▲";
+        toogleChords.innerText = "▼";
     }   
 })
 

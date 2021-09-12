@@ -35,11 +35,11 @@ $("#toogleSynth").on("click", function () {
     boolToogleSynth = !boolToogleSynth;
 
     if (boolToogleSynth == true) {
-        toogleSynth.innerText = "▼";
+        toogleSynth.innerText = "▲";
     }
 
     else if (boolToogleSynth == false) {
-        toogleSynth.innerText = "▲";
+        toogleSynth.innerText = "▼";
     }   
 })
 

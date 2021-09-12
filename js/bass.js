@@ -35,11 +35,11 @@ $("#toogleBass").on("click", function () {
     boolToogleBass = !boolToogleBass;
 
     if (boolToogleBass == true) {
-        toogleBass.innerText = "▼";
+        toogleBass.innerText = "▲";
     }
 
     else if (boolToogleBass == false) {
-        toogleDrums.innerText = "▲";
+        toogleBass.innerText = "▼";
     }   
 })
 
