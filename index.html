@@ -15,21 +15,17 @@
 <body>    
 
     <header>            
-        <div id="h1">
-            <h1>Demo Design</h1>
-        </div>
-
         <div>
-            <section class="metrónomo">
+            <section class="metronomo">
                 <label for="bpm">BPM</label>
-                <input name="bpm" id="bpm" class="slider sliderMain" type="range" min="60" max="220" value="120" step="1" />
                 <span id="bpmval">120</span>
+                <input name="bpm" id="bpm" class="slider sliderMain" type="range" min="60" max="220" value="120" step="1" />
             </section>
     
             <section class="gain">
                 <label for="gain">Gain</label>
-                <input name="gain" id="gain" class="slider sliderMain" type="range" min="0" max="1" value="1" step="0.1" />
                 <span id="gainval">1</span>
+                <input name="gain" id="gain" class="slider sliderMain" type="range" min="0" max="1" value="1" step="0.1" />
             </section>
     
             <section id="playStop">
@@ -50,26 +46,12 @@
             <div class="padding">
                 <div>
                     <section class="volDrums">
-                        <h2>Drums</h2>
-                        <div>
-                            <label for="volDrums">Vol.</label>
-                            <input name="volDrums" class="slider sliderDrums" id="volDrums" type="range" min="-20" max="20" value="1" step="1">
-                            <span id="volDrumsVal">1</span>
+                        <div id="instNameToogle">
+                            <h2>Drums</h2>
+                            <button id="toogleDrums" class="botonDrums buttonAnim" data-playing="false"> ▼ </button>
                         </div>
-                        <div>
-                            <label for="revDrums">Reverb</label>
-                            <input name="revDrums"class="slider sliderDrums" id="revDrums" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="revDrumsVal">0</span>
-                        </div>
-                        <div>
-                            <label for="delayDrums">Delay</label>
-                            <input name="delayDrums"class="slider sliderDrums" id="delayDrums" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="delayDrumsVal">0</span>
-                        </div>
-                        <div>
-                            <input type="submit" class="botonDrums buttonAnim" name="envio" value="Aplicar" id="enviarParDrums">
-                            <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
-                            <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
+                        <div id="drumsParameters" class="instParameters">
+                            <!-- PARAMETERS -->
                         </div>
                     </section>
                 </div>
@@ -402,26 +384,12 @@
             <div class="padding">
                 <div>
                     <section class="volBass">
-                        <h2>Bass</h2>
-                        <div>
-                            <label for="volBass">Vol.</label>
-                            <input name="volBass" class="slider sliderBass" id="volBass" type="range" min="-20" max="20" value="1" step="1">
-                            <span id="volBassVal">1</span>
+                        <div id="instNameToogle">
+                            <h2>Bass</h2>
+                            <button id="toogleBass" class="botonBass buttonAnim" data-playing="false"> ▼ </button>
                         </div>
-                        <div>
-                            <label for="revBass">Reverb</label>
-                            <input name="revBass"class="slider sliderBass" id="revBass" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="revBassVal">0</span>
-                        </div>
-                        <div>
-                            <label for="delayBass">Delay</label>
-                            <input name="delayBass"class="slider sliderBass" id="delayBass" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="delayBassVal">0</span>
-                        </div>
-                        <div>
-                            <input type="submit" class="botonBass buttonAnim" name="envio" value="Aplicar" id="enviarParBass">
-                            <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
-                            <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>
+                        <div id="bassParameters" class="instParameters">
+                            <!-- PARAMETERS -->
                         </div>
                     </section>
                 </div>
@@ -755,26 +723,12 @@
             <div class="padding">
                 <div>
                     <section class="volSynth">
-                        <h2>Synth</h2>
-                        <div>
-                            <label for="volSynth">Vol.</label>
-                            <input name="volSynth"class="slider sliderSynth" id="volSynth" type="range" min="-20" max="20" value="1" step="1">
-                            <span id="volSynthVal">1</span>
+                        <div id="instNameToogle">
+                            <h2>Synth</h2>
+                            <button id="toogleSynth" class="botonSynth buttonAnim" data-playing="false"> ▼ </button>
                         </div>
-                        <div>
-                            <label for="revSynth">Reverb</label>
-                            <input name="revSynth"class="slider sliderSynth" id="revSynth" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="revSynthVal">0</span>
-                        </div>
-                        <div>
-                            <label for="delaySynth">Delay</label>
-                            <input name="delaySynth"class="slider sliderSynth" id="delaySynth" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="delaySynthVal">0</span>
-                        </div>
-                        <div>
-                            <input type="submit" class="botonSynth buttonAnim" name="envio" value="Aplicar" id="enviarParSynth">
-                            <button id="muteSynth" class="botonSynth buttonAnim" data-playing="false">Mute</button>
-                            <button id="botonClearSynth" class="botonSynth buttonAnim" data-playing="false">Clear</button>
+                        <div id="synthParameters" class="instParameters">
+                            <!-- PARAMETERS -->
                         </div>
                     </section>
                 </div>
@@ -1107,27 +1061,14 @@
             <div class="padding">
                 <div>
                     <section class="volChords">
-                        <h2>Chords</h2>
-                        <div>
-                            <label for="volChords">Vol.</label>
-                            <input name="volChords" class="slider sliderChords" id="volChords" type="range" min="-20" max="20" value="1" step="1">
-                            <span id="volChordsVal">1</span>
+                        <div id="instNameToogle">
+                            <h2>Chords</h2>
+                            <button id="toogleChords" class="botonChords buttonAnim" data-playing="false"> ▼ </button>
                         </div>
-                        <div>
-                            <label for="revChords">Reverb</label>
-                            <input name="revChords"class="slider sliderChords" id="revChords" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="revChordsVal">0</span>
+                        <div id="chordsParameters" class="instParameters">
+                            <!-- PARAMETERS -->
                         </div>
-                        <div>
-                            <label for="delayChords">Delay</label>
-                            <input name="delayChords"class="slider sliderChords" id="delayChords" type="range" min="0" max="1" value="0" step="0.1">
-                            <span id="delayChordsVal">0</span>
-                        </div>
-                        <div>
-                            <input type="submit" class="botonChords buttonAnim" name="envio" value="Aplicar" id="enviarParChords">
-                            <button id="muteChords" class="botonChords buttonAnim" data-playing="false">Mute</button>
-                            <button id="botonClearChords" class="botonChords buttonAnim" data-playing="false">Clear</button>
-                        </div>
+                    </section>
                 </div>
             </div>
             

@@ -1,5 +1,56 @@
 /* CHORDS */
 
+
+/* PARAMETROS */
+$("#chordsParameters").prepend(`                               
+    <div>
+        <label for="volChords">Vol.</label>
+        <input name="volChords" class="slider sliderChords" id="volChords" type="range" min="-20" max="20" value="1" step="1">
+        <span id="volChordsVal">1</span>
+    </div>
+    <div>
+        <label for="revChords">Reverb</label>
+        <input name="revChords"class="slider sliderChords" id="revChords" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="revChordsVal">0</span>
+    </div>
+    <div>
+        <label for="delayChords">Delay</label>
+        <input name="delayChords"class="slider sliderChords" id="delayChords" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="delayChordsVal">0</span>
+    </div>
+    <div>
+        <input type="submit" class="botonChords buttonAnim" name="envio" value="Aplicar" id="enviarParChords">
+        <button id="muteChords" class="botonChords buttonAnim" data-playing="false">Mute</button>
+        <button id="botonClearChords" class="botonChords buttonAnim" data-playing="false">Clear</button>
+    </div>                     
+`);
+
+
+/* MOSTRAR PARAMETROS */
+
+const toogleChords = document.querySelector('#toogleChords');
+let boolToogleChords = false;
+
+
+$("#toogleChords").on("click", function () {
+    $("#chordsParameters").toggle("fast");
+    boolToogleChords = !boolToogleChords;
+
+    if (boolToogleChords == true) {
+        toogleChords.innerText = "▼";
+    }
+
+    else if (boolToogleChords == false) {
+        toogleChords.innerText = "▲";
+    }   
+})
+
+
+
+
+
+
+
 /* CREO ARRAY DEL BAJO CON 8 NOTAS */
 const acordes = [
     new Tone.PolySynth(),

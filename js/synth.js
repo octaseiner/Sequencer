@@ -1,5 +1,51 @@
 /* SYNTH */
 
+$("#synthParameters").prepend(`  
+    <div>
+        <label for="volSynth">Vol.</label>
+        <input name="volSynth"class="slider sliderSynth" id="volSynth" type="range" min="-20" max="20" value="1" step="1">
+        <span id="volSynthVal">1</span>
+    </div>
+    <div>
+        <label for="revSynth">Reverb</label>
+        <input name="revSynth"class="slider sliderSynth" id="revSynth" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="revSynthVal">0</span>
+    </div>
+    <div>
+        <label for="delaySynth">Delay</label>
+        <input name="delaySynth"class="slider sliderSynth" id="delaySynth" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="delaySynthVal">0</span>
+    </div>
+    <div>
+        <input type="submit" class="botonSynth buttonAnim" name="envio" value="Aplicar" id="enviarParSynth">
+        <button id="muteSynth" class="botonSynth buttonAnim" data-playing="false">Mute</button>
+        <button id="botonClearSynth" class="botonSynth buttonAnim" data-playing="false">Clear</button>
+    </div>
+`);
+
+
+/* MOSTRAR PARAMETROS */
+
+const toogleSynth = document.querySelector('#toogleSynth');
+let boolToogleSynth = false;
+
+
+$("#toogleSynth").on("click", function () {
+    $("#synthParameters").toggle("fast");
+    boolToogleSynth = !boolToogleSynth;
+
+    if (boolToogleSynth == true) {
+        toogleSynth.innerText = "▼";
+    }
+
+    else if (boolToogleSynth == false) {
+        toogleSynth.innerText = "▲";
+    }   
+})
+
+
+
+
 /* CREO ARRAY DEL SINTE CON 8 NOTAS */
 const synths = [
     new Tone.Synth(),

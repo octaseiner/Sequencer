@@ -1,5 +1,54 @@
 /* BASS */
 
+$("#bassParameters").prepend(`                                                    
+    <div>
+        <label for="volBass">Vol.</label>
+        <input name="volBass" class="slider sliderBass" id="volBass" type="range" min="-20" max="20" value="1" step="1">
+        <span id="volBassVal">1</span>
+    </div>
+    <div>
+        <label for="revBass">Reverb</label>
+        <input name="revBass"class="slider sliderBass" id="revBass" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="revBassVal">0</span>
+    </div>
+    <div>
+        <label for="delayBass">Delay</label>
+        <input name="delayBass"class="slider sliderBass" id="delayBass" type="range" min="0" max="1" value="0" step="0.1">
+        <span id="delayBassVal">0</span>
+    </div>
+    <div>
+        <input type="submit" class="botonBass buttonAnim" name="envio" value="Aplicar" id="enviarParBass">
+        <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
+        <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>
+    </div>
+`);
+
+
+/* MOSTRAR PARAMETROS */
+
+const toogleBass = document.querySelector('#toogleBass');
+let boolToogleBass = false;
+
+
+$("#toogleBass").on("click", function () {
+    $("#bassParameters").toggle("fast");
+    boolToogleBass = !boolToogleBass;
+
+    if (boolToogleBass == true) {
+        toogleBass.innerText = "▼";
+    }
+
+    else if (boolToogleBass == false) {
+        toogleDrums.innerText = "▲";
+    }   
+})
+
+
+
+
+
+
+
 /* CREO ARRAY DEL BAJO CON 8 NOTAS */
 const bajos = [
     new Tone.MonoSynth(),

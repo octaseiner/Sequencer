@@ -1,6 +1,57 @@
 /* DRUMS */
 
 
+/* PARAMETROS */
+$("#drumsParameters").prepend(`                            
+<div>
+    <label for="volDrums">Vol.</label>
+    <input name="volDrums" class="slider sliderDrums" id="volDrums" type="range" min="-20" max="20" value="1" step="1">
+    <span id="volDrumsVal">1</span>
+</div>
+<div>
+    <label for="revDrums">Reverb</label>
+    <input name="revDrums"class="slider sliderDrums" id="revDrums" type="range" min="0" max="1" value="0" step="0.1">
+    <span id="revDrumsVal">0</span>
+</div>
+<div>
+    <label for="delayDrums">Delay</label>
+    <input name="delayDrums"class="slider sliderDrums" id="delayDrums" type="range" min="0" max="1" value="0" step="0.1">
+    <span id="delayDrumsVal">0</span>
+</div>
+<div>
+    <input type="submit" class="botonDrums buttonAnim" name="envio" value="Aplicar" id="enviarParDrums">
+    <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
+    <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
+</div>
+`);
+
+
+/* MOSTRAR PARAMETROS */
+
+const toogleDrums = document.querySelector('#toogleDrums');
+let boolToogleDrums = false;
+
+
+$("#toogleDrums").on("click", function () {
+    $("#drumsParameters").toggle("fast");
+    boolToogleDrums = !boolToogleDrums;
+
+    if (boolToogleDrums == true) {
+        toogleDrums.innerText = "▼";
+    }
+
+    else if (boolToogleDrums == false) {
+        toogleDrums.innerText = "▲";
+    }   
+})
+
+
+
+
+
+
+
+
 
 /* CREO ARRAY DE DRUMS CON 8 CUERPOS Y ASIGNO SONIDO */
 const drums = [
@@ -125,8 +176,6 @@ $("#botonClearDrums").on('click', function () {
 
 
 
-
-
 /* FUNCION DEL LOOP */
 function repeatDrums(time) {
 let stepDrums = indexDrums % 32;
@@ -140,4 +189,8 @@ let stepDrums = indexDrums % 32;
     indexDrums++;
     drums.autostart = true;
 } 
+
+
+
+
 

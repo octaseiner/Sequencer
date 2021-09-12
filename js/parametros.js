@@ -43,3 +43,9 @@ function cambioPar(e) {
     ganancia = parseFloat(document.querySelector("#gain").value);
     gain.gain.rampTo(ganancia);
 }
+
+
+
+
+
+
