@@ -12,7 +12,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 12px;
     position: fixed;
     top: 0;
     background-color: #1a1a1a;
@@ -43,28 +43,28 @@ body {
         justify-content: space-around; }
   body main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     margin-top: 50px; }
-    body main section {
+    body main div section {
       display: flex;
       flex-direction: row;
       align-items: center; }
-      body main section div {
+      body main div section div {
         height: 30px;
         width: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center; }
-        body main section div p {
+        body main div section div p {
           color: snow;
           width: 80px; }
-        body main section div div {
+        body main div section div div {
           display: flex;
           flex-direction: row;
           align-items: center; }
-          body main section div div section {
+          body main div section div div section {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -72,31 +72,54 @@ body {
             width: 200px;
             height: 250px;
             margin-right: 50px; }
-            body main section div div section h2 {
+            body main div section div div section h2 {
               color: snow; }
-            body main section div div section div div {
+            body main div section div div section div div {
               width: 200px;
               display: flex;
               flex-direction: row;
               justify-content: space-around;
               color: snow;
               margin-bottom: 10px; }
-              body main section div div section div div div {
+              body main div section div div section div div div {
                 width: 200px; }
-      body main section section {
+      body main div section section {
         display: flex;
         flex-direction: column;
         align-items: center; }
-        body main section section section {
+        body main div section section section {
           color: snow;
           margin-top: 20px;
           display: flex;
           flex-direction: column;
           align-items: center; }
-          body main section section section div {
+          body main div section section section div {
             display: flex;
             flex-direction: row;
             align-items: center; }
+    body main div#instShow {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #0a0;
+      margin: 50px 0px 0px 50px; }
+      body main div#instShow p {
+        color: snow; }
+      body main div#instShow div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; }
+        body main div#instShow div div {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center; }
+          body main div#instShow div div button {
+            margin: 10px; }
   body footer p {
     color: #0a0;
     filter: hue-rotate(20deg); }
