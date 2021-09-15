@@ -276,7 +276,7 @@ section.metronomo {
 
 
 
-/* --------- MARGENES INPUTS --------- */
+/* --------- MARGIN INPUTS --------- */
 .marginR {
     margin-right: 15px;
 }
@@ -313,13 +313,6 @@ input[type=checkbox]:after {
     background: transparent;
     border: 2px #0a0 solid;
 }
-
-// input[type=checkbox]:checked.changed:after { 
-//     background: #0a0;
-//     border: 2px snow solid;
-//     filter: hue-rotate(420deg);
-// }
-
 
 input[type=checkbox]:checked:after {
     content: "  ";
@@ -362,7 +355,12 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 }
 
 
+/* CURRENT INPUT */
 
+.snow {
+    border: solid snow;
+    filter: hue-rotate(180deg) brightness(100%) sepia(100%) saturate(1%);
+}
 
 
 
@@ -426,7 +424,7 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 
 
 
-/* --------- BOTONES --------- */
+/* --------- BUTTONS --------- */
 .boton {
     border-radius: 10px;
     background-color: transparent;
@@ -482,7 +480,7 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 }
 
 
-/* ANIMACION BOTONES */
+/* ANIMATION BUTTONS */
 .buttonAnim {
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 2px;

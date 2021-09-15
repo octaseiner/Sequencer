@@ -231,7 +231,7 @@ $("#botonClearDrums").on('click', function () {
 
 
 
-
+let now = Tone.now();
 
 /* LOOP FUNCTION */
 function repeatDrums(time) {
