@@ -98,8 +98,8 @@ Tone.Transport.scheduleRepeat(repeatChords,'16n');
 
 /* GET ALL CHORDS INPUTS - ASSIGN INPUTS NOTES */
 const $rowsChords = document.body.querySelectorAll('section#chords > div > div > div'),
-    notesChords = [['C4','E4','G4'], ['D4','F4','A4'], ['E4','G4','B4'],['F4','A4','C5'], ['G4','B4','D5'], ['A4','C5','E5'],['B5','D5','F5'],['C5','E5','G5']];
-let indexChords = 0;
+    notesChords = [['C5','E5','G5'], ['B4','D5','F5'], ['A4','C5','E5'], ['G4','B4','D5'], ['F4','A4','C5'], ['E4','G4','B4'], ['D4','F4','A4'], ['C4','E4','G4']];
+    let indexChords = 0;
 
 
 

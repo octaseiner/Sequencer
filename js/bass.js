@@ -96,7 +96,7 @@ Tone.Transport.scheduleRepeat(repeatBass,'16n');
 
 /* GET ALL BASS INPUTS - ASSIGN INPUTS NOTES */
 const $rowsBass = document.body.querySelectorAll('section#bass > div > div > div'),
-    notesBass = ['C2', 'D2', 'E2','F2', 'G2', 'A2','B2', 'C3'];
+    notesBass = ['C3', 'B2', 'A2', 'G2', 'F2', 'E2', 'D2', 'C2'];
 let indexBass = 0;
 
 

@@ -99,7 +99,8 @@ Tone.Transport.scheduleRepeat(repeatSynth,'16n');
 
 /* GET ALL SYNTH INPUTS - ASSIGN INPUTS NOTES */
 const $rowsSynth = document.body.querySelectorAll("section#synth > div > div > div"),
-    notesSynth = ['C4', 'D4', 'E4','F4', 'G4', 'A4','B4', 'C5'];
+    notesSynth = ['C5', 'B4', 'A4', 'G4', 'F4', 'E4', 'D4', 'C4'];
+                
 let indexSynth = 0;
 
 
