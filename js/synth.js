@@ -1,10 +1,11 @@
 /* SYNTH */
 
+/* PARAMETERS */
 $("#synthParameters").prepend(`  
     <div>
         <label for="volSynth">Vol.</label>
-        <input name="volSynth"class="slider sliderSynth" id="volSynth" type="range" min="-20" max="20" value="1" step="1">
-        <span id="volSynthVal">1</span>
+        <input name="volSynth"class="slider sliderSynth" id="volSynth" type="range" min="-40" max="6" value="-6" step="1">
+        <span id="volSynthVal">-6</span>
     </div>
     <div>
         <label for="revSynth">Reverb</label>
@@ -16,15 +17,16 @@ $("#synthParameters").prepend(`
         <input name="delaySynth"class="slider sliderSynth" id="delaySynth" type="range" min="0" max="1" value="0" step="0.1">
         <span id="delaySynthVal">0</span>
     </div>
-    <div>
-        <input type="submit" class="botonSynth buttonAnim" name="envio" value="Aplicar" id="enviarParSynth">
+    <div class="parInstButtons">
+        <input type="submit" class="botonSynth buttonAnim" name="envio" value="Apply" id="enviarParSynth">
         <button id="muteSynth" class="botonSynth buttonAnim" data-playing="false">Mute</button>
+        <button id="soloSynth" class="botonSynth buttonAnim" data-playing="false">Solo</button>
         <button id="botonClearSynth" class="botonSynth buttonAnim" data-playing="false">Clear</button>
     </div>
 `);
 
 
-/* MOSTRAR PARAMETROS */
+/* SHOW PARAMETERS */
 
 const toogleSynth = document.querySelector('#toogleSynth');
 let boolToogleSynth = false;
@@ -46,7 +48,30 @@ $("#toogleSynth").on("click", function () {
 
 
 
-/* CREO ARRAY DEL SINTE CON 8 NOTAS */
+
+/* INPUT SYNTH CHECK */
+const checkSynth = document.querySelector('#checkSynth');
+let boolCheckSynth = true;
+
+$("#checkSynth").on("click", () => {
+    boolCheckSynth = !boolCheckSynth;
+
+    if (boolCheckSynth == false) {
+        $("#checkSynth").attr("checked","checked");
+        $("#synth").hide("fast");
+    }
+
+    else if (boolCheckSynth == true) {
+        $("#checkSynth").removeAttr("checked");
+        $("#synth").show("fast");
+    }   
+});
+
+
+
+
+
+/* CREATE SYNTH ARRAY WITH 8 NOTES */
 const synths = [
     new Tone.Synth(),
     new Tone.Synth(),
@@ -58,7 +83,7 @@ const synths = [
     new Tone.Synth()
 ];
 
-/* ASIGNO QUE TIPO DE SONIDO QUIERO QUE TENGA CADA NOTA */
+//* ASSIGN NOTE SOUND */
 synths[0].oscillator.type = 'square';
 synths[1].oscillator.type = 'square';
 synths[2].oscillator.type = 'square';
@@ -69,31 +94,31 @@ synths[6].oscillator.type = 'square';
 synths[7].oscillator.type = 'square';
 
 
-/*  CUANTO QUIERO QUE DURE CADA NOTA */
-Tone.Transport.scheduleRepeat(repeatSynth,'8n');
+/*  CALL LOOP FUCTION - NOTE DURATION */
+Tone.Transport.scheduleRepeat(repeatSynth,'16n');
 
-/* ASIGNO NOTAS A LOS INPUTS = ARRAY */
+/* GET ALL SYNTH INPUTS - ASSIGN INPUTS NOTES */
 const $rowsSynth = document.body.querySelectorAll("section#synth > div > div > div"),
     notesSynth = ['C4', 'D4', 'E4','F4', 'G4', 'A4','B4', 'C5'];
 let indexSynth = 0;
 
 
 
-/* VOLUMEN */
-/* CREO VOLUMEN Y LO CONECTO AL GAIN */
-let volSynth = 1;
-let synthVol = new Tone.Volume(1).connect(gain);
+/* VOLUME */
+/* CREATE VOLUME AND CONNECT TO GAIN */
+let volSynth = -6;
+let synthVol = new Tone.Volume(-6).connect(gain);
 
 const volSynthControl = document.querySelector('#volSynth');
 const gainSynthValor = document.querySelector('#volSynthVal');
 
-    /* VISUAL VOLUMEN */
+    /* VOLUME VISUAL */
 volSynthControl.addEventListener('input', function(e) {
     volSynth = Number(e.target.value);
     gainSynthValor.innerText = volSynth;
 }, false);
 
-/* BOTON MUTE */
+/* BUTTON MUTE */
 const muteSynth = document.querySelector('#muteSynth')
 $("#muteSynth").on("click", function() {
     synthVol.mute = !(synthVol.mute);
@@ -108,9 +133,47 @@ $("#muteSynth").on("click", function() {
 });
 
 
+/* BUTTON SOLO */
+const soloSynth = document.querySelector('#soloSynth');
+let boolSoloSynth = false;
+
+$("#soloSynth").on("click", function() {
+
+    boolSoloSynth = !boolSoloSynth;
+
+
+    if (boolSoloSynth == false) {
+        soloSynth.innerText = "Solo";
+        muteBass.innerText = "Mute";
+        muteDrums.innerText = "Mute";
+        muteChords.innerText = "Mute";
+        bassVol.mute = !(bassVol.mute);
+        drumsVol.mute = !(drumsVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }
+
+    else if (boolSoloSynth == true) {
+        soloSynth.innerText = "All"
+        muteBass.innerText = "Unmute";
+        muteDrums.innerText = "Unmute";
+        muteChords.innerText = "Unmute";
+        bassVol.mute = !(bassVol.mute);
+        drumsVol.mute = !(drumsVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }   
+
+    if (synthVol.mute == true) {
+        synthVol.mute = !(synthVol.mute)
+        muteSynth.innerText = "Mute";
+    }
+});
+
+
+
+
 
 /* REVERB */
-/* CREO REVERB Y LA CONECTO AL VOLUMEN */
+/* CREATE REVERB AND CONNECT TO VOLUME */
 let revSynth = 0;
 let synthRev = new Tone.Reverb(5).connect(synthVol);
 synthRev.wet.value = 0;
@@ -118,7 +181,7 @@ synthRev.wet.value = 0;
 const revSynthControl = document.querySelector('#revSynth');
 const revSynthValor = document.querySelector('#revSynthVal');
 
-    /* VISUAL REVERB */
+    /* REVERB VISUAL */
 revSynthControl.addEventListener('input', function(e) {
     revSynth = Number(e.target.value);
     revSynthValor.innerText = revSynth;
@@ -127,7 +190,7 @@ revSynthControl.addEventListener('input', function(e) {
 
 
 /* DELAY */
-/* CREO DELAY Y LA CONECTO AL VOLUMEN */
+/* CREATE DELAY AND CONNECT TO VOLUME */
 let delaySynth = 0;
 let synthDelay = new Tone.FeedbackDelay("8n", 0.5).connect(synthVol);
 synthDelay.wet.value = 0;
@@ -135,7 +198,7 @@ synthDelay.wet.value = 0;
 const delaySynthControl = document.querySelector('#delaySynth');
 const delaySynthValor = document.querySelector('#delaySynthVal');
 
-    /* VISUAL DELAY */
+    /* DELAY VISUAL */
 delaySynthControl.addEventListener('input', function(e) {
     delaySynth = Number(e.target.value);
     delaySynthValor.innerText = delaySynth;
@@ -144,16 +207,16 @@ delaySynthControl.addEventListener('input', function(e) {
 
 
 
-/*  CONECTO EL SINTE A DELAY Y REVERB */
+/*  CONNECT SYNTH TO DELAY AND REVERB */
 synths.forEach(synth => synth.chain(synthDelay, synthRev));
 
 
 
-/* ESTABLECE PARAMETROS */
+/* APPLY PARAMETROS */
 $("#enviarParSynth").on("click", function (e) {
     e.preventDefault();
 
-    /* VOLUMEN */
+    /* VOLUME */
     volSynth = document.querySelector("#volSynth").value;
     synthVol.volume.value = volSynth;
 
@@ -168,7 +231,7 @@ $("#enviarParSynth").on("click", function (e) {
 
 
 
-/* BOTON CLEAR */
+/* BUTTON CLEAR */
 $("#botonClearSynth").on('click', function () {
     document.querySelectorAll('.inputSynth')
     .forEach(inputSynthCheck => inputSynthCheck.checked = false);
@@ -176,7 +239,7 @@ $("#botonClearSynth").on('click', function () {
 
 
 
-/* FUNCION DEL LOOP */
+/* LOOP FUNCTION */
 function repeatSynth(time) {
     let stepSynth = indexSynth % 32;
     for (let i = 0; i < $rowsSynth.length; i++) {

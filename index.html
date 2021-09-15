@@ -24,20 +24,24 @@
     
             <section class="gain">
                 <label for="gain">Gain</label>
-                <span id="gainval">1</span>
-                <input name="gain" id="gain" class="slider sliderMain" type="range" min="0" max="1" value="1" step="0.1" />
+                <span id="gainval">0.5</span>
+                <input name="gain" id="gain" class="slider sliderMain" type="range" min="0" max="1" value="0.5" step="0.1" />
             </section>
     
             <section id="playStop">
-                <input type="submit" class="marginL boton buttonAnim" name="envio" value="Aplicar" id="enviarPar">
+                <input type="submit" class="marginL boton buttonAnim" name="envio" value="Apply" id="enviarPar">
                 <button id="botonPlay" class="boton buttonAnim" data-playing="false">Play</button>
+                <!-- <button id="botonRestart" class="boton buttonAnim" data-playing="false">Restart</button> -->
                 <button id="botonResetAll" class="boton buttonAnim" data-playing="false">Reset All</button>
                 <button id="botonClearAll" class="boton buttonAnim" data-playing="false">Clear All</button>
             </section>
-        </div>
 
-        <div>
-            <section id="repro"> </section>
+            <section class="card">
+                <label class="check"> <input class="instShow" id="checkDrums" type="checkbox" checked><span class="font buttonAnim">Drums</span> </label> 
+                <label class="check"> <input class="instShow" id="checkBass" type="checkbox" checked> <span class="font buttonAnim">Bass</span> </label> 
+                <label class="check"> <input class="instShow" id="checkSynth" type="checkbox" checked> <span class="font buttonAnim">Synth</span> </label> 
+                <label class="check"> <input class="instShow" id="checkChords" type="checkbox" checked> <span class="font buttonAnim">Chords</span> </label> 
+            </section>
         </div>
     </header>
 
@@ -1398,18 +1402,8 @@
             </section>
         </div>
 
-        <div id="instShow">
-            <p>Show Instruments</p>
-            <div>
-                <div>
-                    <button class="boton buttonAnim">Drums</button>
-                    <button class="boton buttonAnim">Bass</button>
-                </div>
-                <div>
-                    <button class="boton buttonAnim">Synth</button>
-                    <button class="boton buttonAnim">Chords</button>
-                </div>
-            </div>
+        <div id="aside">
+           
         </div>
 
     </main>
@@ -1421,10 +1415,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/parametros.js"></script>
-    <script src="js/drums.js"></script>
     <script src="js/bass.js"></script>
     <script src="js/synth.js"></script>
     <script src="js/chords.js"></script>
+    <script src="js/drums.js"></script>
 
 </body>
 </html>

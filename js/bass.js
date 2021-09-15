@@ -1,10 +1,11 @@
 /* BASS */
 
+/* PARAMETERS */
 $("#bassParameters").prepend(`                                                    
     <div>
         <label for="volBass">Vol.</label>
-        <input name="volBass" class="slider sliderBass" id="volBass" type="range" min="-20" max="20" value="1" step="1">
-        <span id="volBassVal">1</span>
+        <input name="volBass" class="slider sliderBass" id="volBass" type="range" min="-40" max="6" value="-6" step="1">
+        <span id="volBassVal">-6</span>
     </div>
     <div>
         <label for="revBass">Reverb</label>
@@ -16,15 +17,16 @@ $("#bassParameters").prepend(`
         <input name="delayBass"class="slider sliderBass" id="delayBass" type="range" min="0" max="1" value="0" step="0.1">
         <span id="delayBassVal">0</span>
     </div>
-    <div>
-        <input type="submit" class="botonBass buttonAnim" name="envio" value="Aplicar" id="enviarParBass">
+    <div class="parInstButtons">
+        <input type="submit" class="botonBass buttonAnim" name="envio" value="Apply" id="enviarParBass">
         <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
+        <button id="soloBass" class="botonBass buttonAnim" data-playing="false">Solo</button>
         <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>
     </div>
 `);
 
 
-/* MOSTRAR PARAMETROS */
+/* SHOW PARAMETERS */
 
 const toogleBass = document.querySelector('#toogleBass');
 let boolToogleBass = false;
@@ -45,11 +47,29 @@ $("#toogleBass").on("click", function () {
 
 
 
+/* INPUT BASS CHECK */
+const checkBass = document.querySelector('#checkBass');
+let boolCheckBass = true;
+
+$("#checkBass").on("click", () => {
+    boolCheckBass = !boolCheckBass;
+
+    if (boolCheckBass == false) {
+        $("#checkBass").attr("checked","checked");
+        $("#bass").hide("fast");
+    }
+
+    else if (boolCheckBass == true) {
+        $("#checkBass").removeAttr("checked");
+        $("#bass").show("fast");
+    }   
+});
 
 
 
 
-/* CREO ARRAY DEL BAJO CON 8 NOTAS */
+
+/* CREATE BASS ARRAY WITH 8 NOTES */
 const bajos = [
     new Tone.MonoSynth(),
     new Tone.MonoSynth(),
@@ -61,7 +81,7 @@ const bajos = [
     new Tone.MonoSynth()
 ];
 
-/* ASIGNO QUE TIPO DE SONIDO QUIERO QUE TENGA CADA NOTA */
+/* ASSIGN NOTE SOUND */
 bajos[0].oscillator.type = 'sine';
 bajos[1].oscillator.type = 'sine';
 bajos[2].oscillator.type = 'sine';
@@ -71,10 +91,10 @@ bajos[5].oscillator.type = 'sine';
 bajos[6].oscillator.type = 'sine';
 bajos[7].oscillator.type = 'sine';
 
-/*  CUANTO QUIERO QUE DURE CADA NOTA */
-Tone.Transport.scheduleRepeat(repeatBass,'8n');
+/*  CALL LOOP FUCTION - NOTE DURATION */
+Tone.Transport.scheduleRepeat(repeatBass,'16n');
 
-/* ASIGNO NOTAS A LOS INPUTS = ARRAY */
+/* GET ALL BASS INPUTS - ASSIGN INPUTS NOTES */
 const $rowsBass = document.body.querySelectorAll('section#bass > div > div > div'),
     notesBass = ['C2', 'D2', 'E2','F2', 'G2', 'A2','B2', 'C3'];
 let indexBass = 0;
@@ -82,21 +102,21 @@ let indexBass = 0;
 
 
 
-/* VOLUMEN */
-/* CREO VOLUMEN Y LO CONECTO AL GAIN */
-let volBass = 1;
-let bassVol = new Tone.Volume(1).connect(gain);
+/* VOLUME */
+/* CREATE VOLUME AND CONNECT TO GAIN */
+let volBass = -6;
+let bassVol = new Tone.Volume(-6).connect(gain);
 
 const volBassControl = document.querySelector('#volBass');
 const gainBassValor = document.querySelector('#volBassVal');
 
-    /* VISUAL VOLUMEN */
+    /* VOLUME VISUAL */
 volBassControl.addEventListener('input', function(e) {
     volBass = Number(e.target.value);
     gainBassValor.innerText = volBass;
 }, false);
 
-/* BOTON MUTE */
+/* BUTTON MUTE */
 const muteBass = document.querySelector('#muteBass')
 $("#muteBass").on("click", function() {
     bassVol.mute = !(bassVol.mute);
@@ -111,8 +131,47 @@ $("#muteBass").on("click", function() {
 });
 
 
+/* BUTTON SOLO */
+const soloBass = document.querySelector('#soloBass');
+let boolSoloBass = false;
+
+$("#soloBass").on("click", function() {
+
+    boolSoloBass = !boolSoloBass;
+
+
+    if (boolSoloBass == false) {
+        soloBass.innerText = "Solo";
+        muteDrums.innerText = "Mute";
+        muteSynth.innerText = "Mute";
+        muteChords.innerText = "Mute";
+        drumsVol.mute = !(drumsVol.mute);
+        synthVol.mute = !(synthVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }
+
+    else if (boolSoloBass == true) {
+        soloBass.innerText = "All"
+        muteDrums.innerText = "Unmute";
+        muteSynth.innerText = "Unmute";
+        muteChords.innerText = "Unmute";
+        drumsVol.mute = !(drumsVol.mute);
+        synthVol.mute = !(synthVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }   
+
+    if (bassVol.mute == true) {
+        bassVol.mute = !(bassVol.mute)
+        muteBass.innerText = "Mute";
+    }
+});
+
+
+
+
+
 /* REVERB */
-/* CREO REVERB Y LA CONECTO AL VOLUMEN */
+/* CREATE REVERB AND CONNECT TO VOLUME */
 let revBass = 0;
 let bassRev = new Tone.Reverb(5).connect(bassVol);
 bassRev.wet.value = 0;
@@ -120,7 +179,7 @@ bassRev.wet.value = 0;
 const revBassControl = document.querySelector('#revBass');
 const revBassValor = document.querySelector('#revBassVal');
 
-    /* VISUAL REVERB */
+    /* REVERB VISUAL */
 revBassControl.addEventListener('input', function(e) {
     revBass = Number(e.target.value);
     revBassValor.innerText = revBass;
@@ -129,7 +188,7 @@ revBassControl.addEventListener('input', function(e) {
 
 
 /* DELAY */
-/* CREO DELAY Y LA CONECTO AL VOLUMEN */
+/* CREATE DELAY AND CONNECT TO VOLUME */
 let delayBass = 0;
 let bassDelay = new Tone.FeedbackDelay("8n", 0.5).connect(bassVol);
 bassDelay.wet.value = 0;
@@ -137,7 +196,7 @@ bassDelay.wet.value = 0;
 const delayBassControl = document.querySelector('#delayBass');
 const delayBassValor = document.querySelector('#delayBassVal');
 
-    /* VISUAL DELAY */
+    /* DELAY VISUAL  */
 delayBassControl.addEventListener('input', function(e) {
     delayBass = Number(e.target.value);
     delayBassValor.innerText = delayBass;
@@ -145,16 +204,16 @@ delayBassControl.addEventListener('input', function(e) {
 
 
 
-/*  CONECTO EL SINTE A DELAY Y REVERB */
+/*  CONNECT BASS TO DELAY AND REVERB */
 bajos.forEach(bajo => bajo.chain(bassDelay, bassRev));
 
 
 
-/* ESTABLECE PARAMETROS */
+/* APPLY PARAMETROS */
 $("#enviarParBass").on("click", function (e) {
     e.preventDefault();
 
-    /* VOLUMEN */
+    /* VOLUME */
     volBass = document.querySelector("#volBass").value;
     bassVol.volume.value = volBass;
 
@@ -169,7 +228,7 @@ $("#enviarParBass").on("click", function (e) {
 
 
 
-/* BOTON CLEAR */
+/* BUTTON CLEAR */
 $("#botonClearBass").on('click', function () {
     document.querySelectorAll('.inputBass')
     .forEach(inputBassCheck => inputBassCheck.checked = false);
@@ -177,7 +236,7 @@ $("#botonClearBass").on('click', function () {
 
 
 
-/* FUNCION DEL LOOP */
+/* LOOP FUNCTION */
 function repeatBass(time) {
 let stepBass = indexBass % 32;
     for (let i = 0; i < $rowsBass.length; i++) {

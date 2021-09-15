@@ -1,15 +1,13 @@
 console.clear();
 
-/* INICIALIZO */
+/* INITIALIZE */
 document.documentElement.addEventListener('mousedown', () => {
     if (Tone.context.state !== 'running') Tone.context.resume();
 });
 
 
 
-/* CONVIERTO BOTON EN BULEANO */
-/* EVENTO CLICK PARA CAMBIAR TRUE/FALSE */
-/* TRUE = REPRODUCE / FALSE = FRENA */
+/* PLAY - STOP BUTTON */
 
 const play = document.querySelector('#botonPlay');
 let bool = false;
@@ -38,16 +36,18 @@ $("#botonPlay").on("click", function () {
 
 
 
-/* APRETO PARA LIMPIAR TODOS LOS INPUTS */
+/* CLEAN ALL INSTRUMENTS INPUTS */
 $("#botonClearAll").on('click', function () {
-    document.querySelectorAll('input[type="checkbox"]')
+    document.querySelectorAll('input[type="checkbox"]:not(.instShow)')
     .forEach(inputCheck => inputCheck.checked = false);
 });
 
 
 
-// /* RESET ALL */
-// $("#botonResetAll").on("click", function() {
+/* RESET ALL */
+$("#botonResetAll").on("click", function() {
+
+    location.reload();
 
 //     /* CLEAR ALL */
 //     document.querySelectorAll('input[type="checkbox"]')
@@ -62,27 +62,12 @@ $("#botonClearAll").on('click', function () {
 //     ganancia = parseFloat(document.querySelector("#gain").value);
 //     gain.gain.rampTo(1);
 //     gainValor.innerText = 1;
-// });
-
-
-
-
-/* SHOW SCALE */
-const urlJSON = "data/datos.json"
-
-$("#repro").append('<button id="json" class="boton buttonAnim" data-playing="false">Show escale</button>');
-
-
-$("#json").on("click",function () {  
-    $.getJSON(urlJSON, function (data) {
-        $("#repro").prepend(`<div style="color: snow" >
-                                <p>Escale: ${data.escale}</p>
-                                <p>Notes: ${data.notes}</p>
-                            </div>`);
-    });
 });
 
 
 
-
-
+/* RESTART */
+const clock = new Tone.Clock();
+$("#botonRestart").on("click", function() {
+    clock.stop("+1");
+});

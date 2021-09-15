@@ -1,12 +1,12 @@
 /* DRUMS */
 
 
-/* PARAMETROS */
+/* PARAMETERS */
 $("#drumsParameters").prepend(`                            
 <div>
     <label for="volDrums">Vol.</label>
-    <input name="volDrums" class="slider sliderDrums" id="volDrums" type="range" min="-20" max="20" value="1" step="1">
-    <span id="volDrumsVal">1</span>
+    <input name="volDrums" class="slider sliderDrums" id="volDrums" type="range" min="-40" max="6" value="-6" step="1">
+    <span id="volDrumsVal">-6</span>
 </div>
 <div>
     <label for="revDrums">Reverb</label>
@@ -18,15 +18,16 @@ $("#drumsParameters").prepend(`
     <input name="delayDrums"class="slider sliderDrums" id="delayDrums" type="range" min="0" max="1" value="0" step="0.1">
     <span id="delayDrumsVal">0</span>
 </div>
-<div>
-    <input type="submit" class="botonDrums buttonAnim" name="envio" value="Aplicar" id="enviarParDrums">
+<div class="parInstButtons">
+    <input type="submit" class="botonDrums buttonAnim" name="envio" value="Apply" id="enviarParDrums">
     <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
+    <button id="soloDrums" class="botonDrums buttonAnim" data-playing="false">Solo</button>
     <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
 </div>
 `);
 
 
-/* MOSTRAR PARAMETROS */
+/* SHOW PARAMETERS */
 
 const toogleDrums = document.querySelector('#toogleDrums');
 let boolToogleDrums = false;
@@ -47,13 +48,29 @@ $("#toogleDrums").on("click", function () {
 
 
 
+/* INPUT DRUM CHECK */
+const checkDrums = document.querySelector('#checkDrums');
+let boolCheckDrums = true;
+
+$("#checkDrums").on("click", () => {
+    boolCheckDrums = !boolCheckDrums;
+
+    if (boolCheckDrums == false) {
+        $("#checkDrums").attr("checked","checked");
+        $("#drums").hide("fast");
+    }
+
+    else if (boolCheckDrums == true) {
+        $("#checkDrums").removeAttr("checked");
+        $("#drums").show("fast");
+    }   
+});
 
 
 
 
 
-
-/* CREO ARRAY DE DRUMS CON 8 CUERPOS Y ASIGNO SONIDO */
+/* CREATE DRUMS ARRAY AND ASSIGN SOUNDS */
 const drums = [
     new Tone.Player("./audios/crash.mp3"),
     new Tone.Player("./audios/HHo.mp3"),
@@ -69,30 +86,30 @@ const drums = [
 
 
 
-/*  CUANTO QUIERO QUE DURE CADA NOTA */
-Tone.Transport.scheduleRepeat(repeatDrums,'4n');
+/*  CALL LOOP FUCTION - NOTE DURATION */
+Tone.Transport.scheduleRepeat(repeatDrums,'16n');
 
-/* ASIGNO NOTAS A LOS INPUTS = ARRAY */
+/* GET ALL DRUMS INPUTS */
 const $rowsDrums = document.body.querySelectorAll('section#drums > div > div > div');
 let indexDrums = 0;
 
 
 
-/* VOLUMEN */
-/* CREO VOLUMEN Y LO CONECTO AL GAIN */
-let volDrums = 1;
-let drumsVol = new Tone.Volume(1).connect(gain);
+/* VOLUME */
+/* CREATE VOLUME AND CONNECT TO GAIN */
+let volDrums = -6;
+let drumsVol = new Tone.Volume(-6).connect(gain);
 
 const volDrumsControl = document.querySelector('#volDrums');
 const gainDrumsValor = document.querySelector('#volDrumsVal');
 
-    /* VISUAL VOLUMEN */
+    /* VOLUME VISUAL */
 volDrumsControl.addEventListener('input', function(e) {
     volDrums = Number(e.target.value);
     gainDrumsValor.innerText = volDrums;
 }, false);
 
-/* BOTON MUTE */
+/* BUTTON MUTE */
 const muteDrums = document.querySelector('#muteDrums')
 $("#muteDrums").on("click", function() {
     drumsVol.mute = !(drumsVol.mute);
@@ -106,10 +123,47 @@ $("#muteDrums").on("click", function() {
     }   
 });
 
+/* BUTTON SOLO */
+const soloDrums = document.querySelector('#soloDrums');
+let boolSoloDrums = false;
+
+$("#soloDrums").on("click", function() {
+
+    boolSoloDrums = !boolSoloDrums;
+
+
+    if (boolSoloDrums == false) {
+        soloDrums.innerText = "Solo";
+        muteBass.innerText = "Mute";
+        muteSynth.innerText = "Mute";
+        muteChords.innerText = "Mute";
+        bassVol.mute = !(bassVol.mute);
+        synthVol.mute = !(synthVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }
+
+    else if (boolSoloDrums == true) {
+        soloDrums.innerText = "All"
+        muteBass.innerText = "Unmute";
+        muteSynth.innerText = "Unmute";
+        muteChords.innerText = "Unmute";
+        bassVol.mute = !(bassVol.mute);
+        synthVol.mute = !(synthVol.mute);
+        chordsVol.mute = !(chordsVol.mute);
+    }   
+
+    if (drumsVol.mute == true) {
+        drumsVol.mute = !(drumsVol.mute)
+        muteDrums.innerText = "Mute";
+    }
+});
+
+
+
 
 
 /* REVERB */
-/* CREO REVERB Y LA CONECTO AL VOLUMEN */
+/* CREATE REVERB AND CONNECT TO VOLUME */
 let revDrums = 0;
 let drumsRev = new Tone.Reverb(5).connect(drumsVol);
 drumsRev.wet.value = 0;
@@ -117,7 +171,7 @@ drumsRev.wet.value = 0;
 const revDrumsControl = document.querySelector('#revDrums');
 const revDrumsValor = document.querySelector('#revDrumsVal');
 
-    /* VISUAL REVERB */
+    /* REVERB VISUAL */
 revDrumsControl.addEventListener('input', function(e) {
     revDrums = Number(e.target.value);
     revDrumsValor.innerText = revDrums;
@@ -126,7 +180,7 @@ revDrumsControl.addEventListener('input', function(e) {
 
 
 /* DELAY */
-/* CREO DELAY Y LA CONECTO AL VOLUMEN */
+/* CREATE DELAY AND CONNECT TO VOLUME */
 let delayDrums = 0;
 let drumsDelay = new Tone.FeedbackDelay("8n", 0.5).connect(drumsVol);
 drumsDelay.wet.value = 0;
@@ -134,7 +188,7 @@ drumsDelay.wet.value = 0;
 const delayDrumsControl = document.querySelector('#delayDrums');
 const delayDrumsValor = document.querySelector('#delayDrumsVal');
 
-    /* VISUAL DELAY */
+    /* DELAY VISUAL */
 delayDrumsControl.addEventListener('input', function(e) {
     delayDrums = Number(e.target.value);
     delayDrumsValor.innerText = delayDrums;
@@ -142,17 +196,17 @@ delayDrumsControl.addEventListener('input', function(e) {
 
 
 
-/*  CONECTO EL SINTE A DELAY Y REVERB */
+/*  CONNECT DRUMS TO DELAY AND REVERB */
 drums.forEach(drums => drums.chain(drumsDelay, drumsRev));
 
 
 
 
-/* ESTABLECE PARAMETROS */
+/* APPLY PARAMETROS */
 $("#enviarParDrums").on("click", function (e) {
     e.preventDefault();
 
-    /* VOLUMEN */
+    /* VOLUME */
     volDrums = document.querySelector("#volDrums").value;
     drumsVol.volume.value = volDrums;
 
@@ -167,7 +221,7 @@ $("#enviarParDrums").on("click", function (e) {
 
 
 
-/* BOTON CLEAR */
+/* BUTTON CLEAR */
 $("#botonClearDrums").on('click', function () {
     document.querySelectorAll('.inputDrums')
     .forEach(inputDrumsCheck => inputDrumsCheck.checked = false);
@@ -176,14 +230,21 @@ $("#botonClearDrums").on('click', function () {
 
 
 
-/* FUNCION DEL LOOP */
+
+
+
+/* LOOP FUNCTION */
 function repeatDrums(time) {
 let stepDrums = indexDrums % 32;
     for (let i = 0; i < $rowsDrums.length; i++) {
         let drum = drums[i],
             $row = $rowsDrums[i],
             $input = $row.querySelector(`input:nth-child(${stepDrums + 1})`);
-        if ($input.checked) drum.start(time);;
+        if ($input.checked) {
+            $(stepDrums + 1).css({"border":"2px snow solid"})
+            drum.start(time) 
+            // $(".inputDrums").toggleClass('changed');
+        }
     }
 
     indexDrums++;

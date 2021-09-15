@@ -8,6 +8,8 @@ body {
     font-size: 110%;
 
 
+    /* --------- HEADER --------- */
+
     header  {
         width: 100%;
         display: flex;
@@ -53,8 +55,70 @@ body {
                 flex-direction: row;
                 justify-content: space-around;
             }
+
+            section.card {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                min-width: 0;
+                word-wrap: break-word;
+                background-color: transparent;
+                padding-left: 20px;
+                border-left: 2px solid #0a0;
+                margin-left: 10px;
+            
+                label {
+                    cursor: pointer;
+                    color: rgb(26, 26, 26);
+            
+                    span {
+                        padding: 7px;
+                        border: 2px solid #0a0;
+                        display: inline-block;
+                        color: #0a0;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        font-size: 90%;
+                    } 
+            
+                    span:hover {
+                        color: rgb(26, 26, 26);
+                    }
+                }
+            }
         }
     }
+
+
+    label.check input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none;
+        color: rgb(26, 26, 26);
+    }
+        
+    label.check input:checked+span {
+        border-color: #0a0;
+        background-color: #0a0;
+        color: rgb(26, 26, 26);
+    }
+        
+    label.check input::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none;
+        color: rgb(26, 26, 26);
+    }
+
+
+
+
+    
+    /* --------- MAIN --------- */
 
     main {
         display: flex;
@@ -141,40 +205,20 @@ body {
             }
         }
 
-        div#instShow {
-            width: 200px;
-            height: 200px;
+        div#aside {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             border-left: 1px solid #0a0;
-            margin: 50px 0px 0px 50px;
-
-            p {
-                color: snow;
-            }
-            
-            div {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-
-                div {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-
-                    button {
-                        margin: 10px;
-                    }
-                }
-            }
+            margin: 30px 50px 0px 50px;
         }
     }
 
+
+
+    /* ---------- FOOTER ---------- */
     footer {
 
         p {
@@ -192,12 +236,21 @@ body {
     }
 }
 
+
+
+
 div.instParameters {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    width: 250px;
+    height: 300px;
+
+    .parInstButtons {
+        width: 250px;
+        margin-top: 10px;
+    }
 }
 
 div#instNameToogle {
@@ -210,6 +263,7 @@ div#instNameToogle {
 
 section.instrument {
     height: 300px;
+    margin-left: 50px;
 }
 
 section.metronomo {
@@ -217,7 +271,12 @@ section.metronomo {
 }
 
 
-/* MARGENES INPUTS */
+
+
+
+
+
+/* --------- MARGENES INPUTS --------- */
 .marginR {
     margin-right: 15px;
 }
@@ -233,7 +292,10 @@ section.metronomo {
 
 
 
-/* INPUTS */
+
+
+
+/* --------- INPUTS --------- */
 input[type=checkbox] {
     position: relative;
     visibility: hidden;
@@ -251,6 +313,13 @@ input[type=checkbox]:after {
     background: transparent;
     border: 2px #0a0 solid;
 }
+
+// input[type=checkbox]:checked.changed:after { 
+//     background: #0a0;
+//     border: 2px snow solid;
+//     filter: hue-rotate(420deg);
+// }
+
 
 input[type=checkbox]:checked:after {
     content: "  ";
@@ -295,7 +364,10 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 
 
 
-/* SLIDER */
+
+
+
+/* --------- SLIDER --------- */
 .slider {
     -webkit-appearance: none;
     width: 50%;
@@ -349,7 +421,12 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 
 
 
-/* BOTONES */
+
+
+
+
+
+/* --------- BOTONES --------- */
 .boton {
     border-radius: 10px;
     background-color: transparent;
@@ -404,6 +481,7 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
     filter: hue-rotate(280deg);
 }
 
+
 /* ANIMACION BOTONES */
 .buttonAnim {
     font-family: 'Bebas Neue', cursive;
@@ -434,3 +512,9 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
     }
 
 }
+
+
+
+
+
+

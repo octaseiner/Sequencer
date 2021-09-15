@@ -5,7 +5,10 @@ body {
   align-items: center;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
-  font-size: 110%; }
+  font-size: 110%;
+  /* --------- HEADER --------- */
+  /* --------- MAIN --------- */
+  /* ---------- FOOTER ---------- */ }
   body header {
     width: 100%;
     display: flex;
@@ -41,6 +44,47 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: space-around; }
+      body header div section.card {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: transparent;
+        padding-left: 20px;
+        border-left: 2px solid #0a0;
+        margin-left: 10px; }
+        body header div section.card label {
+          cursor: pointer;
+          color: #1a1a1a; }
+          body header div section.card label span {
+            padding: 7px;
+            border: 2px solid #0a0;
+            display: inline-block;
+            color: #0a0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 90%; }
+          body header div section.card label span:hover {
+            color: #1a1a1a; }
+  body label.check input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+    color: #1a1a1a; }
+  body label.check input:checked + span {
+    border-color: #0a0;
+    background-color: #0a0;
+    color: #1a1a1a; }
+  body label.check input::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+    color: #1a1a1a; }
   body main {
     display: flex;
     flex-direction: row;
@@ -97,29 +141,14 @@ body {
             display: flex;
             flex-direction: row;
             align-items: center; }
-    body main div#instShow {
-      width: 200px;
-      height: 200px;
+    body main div#aside {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-left: 1px solid #0a0;
-      margin: 50px 0px 0px 50px; }
-      body main div#instShow p {
-        color: snow; }
-      body main div#instShow div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; }
-        body main div#instShow div div {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center; }
-          body main div#instShow div div button {
-            margin: 10px; }
+      margin: 30px 50px 0px 50px; }
   body footer p {
     color: #0a0;
     filter: hue-rotate(20deg); }
@@ -135,7 +164,11 @@ div.instParameters {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px; }
+  width: 250px;
+  height: 300px; }
+  div.instParameters .parInstButtons {
+    width: 250px;
+    margin-top: 10px; }
 
 div#instNameToogle {
   display: flex;
@@ -145,12 +178,13 @@ div#instNameToogle {
   width: 120px; }
 
 section.instrument {
-  height: 300px; }
+  height: 300px;
+  margin-left: 50px; }
 
 section.metronomo {
   border-right: 2px solid #0a0; }
 
-/* MARGENES INPUTS */
+/* --------- MARGENES INPUTS --------- */
 .marginR {
   margin-right: 15px; }
 
@@ -160,7 +194,7 @@ section.metronomo {
 .padding {
   padding: 20px; }
 
-/* INPUTS */
+/* --------- INPUTS --------- */
 input[type=checkbox] {
   position: relative;
   visibility: hidden;
@@ -207,7 +241,7 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
     opacity: 0;
     transform: scale(1); } }
 
-/* SLIDER */
+/* --------- SLIDER --------- */
 .slider {
   -webkit-appearance: none;
   width: 50%;
@@ -251,7 +285,7 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
 .sliderChords {
   filter: hue-rotate(280deg); }
 
-/* BOTONES */
+/* --------- BOTONES --------- */
 .boton {
   border-radius: 10px;
   background-color: transparent;

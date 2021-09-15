@@ -1,10 +1,10 @@
-/* METRONOMO */
+/* METRONOME - BPM */
 let tempo = 120;
 
 const bpmControl = document.querySelector('#bpm');
 const bpmValor = document.querySelector('#bpmval');
 
-    /* VISUAL DEL BPM */
+    /* VISUAL BPM */
 bpmControl.addEventListener('input', function(e) {
     tempo = Number(e.target.value);
     bpmValor.innerText = tempo;
@@ -12,15 +12,15 @@ bpmControl.addEventListener('input', function(e) {
 
 
 
-/* GANANCIA */
-/* CREO GANANCIA Y LA CONECTO A DESTINATION  */
+/* GAIN */
+/* CREATE GAIN AND CONNECT TO DESTINATION */
 let ganancia;
-let gain = new Tone.Gain(1).toDestination();
+let gain = new Tone.Gain(0.5).toDestination();
 
 const gainControl = document.querySelector('#gain');
 const gainValor = document.querySelector('#gainval');
 
-    /* VISUAL GANANCIA */
+    /* GAIN VISUAL */
 gainControl.addEventListener('input', function(e) {
     ganancia = Number(e.target.value);
     gainValor.innerText = ganancia;
@@ -28,18 +28,18 @@ gainControl.addEventListener('input', function(e) {
 
 
 
-    /* ESTABLECE PARAMETROS */
+    /* APPLY PARAMETERS */
 let botonPar = document.querySelector("#enviarPar");
 botonPar.addEventListener("click", cambioPar);
     
 function cambioPar(e) {
     e.preventDefault();
     
-    /* TEMPO */
+    /* BPM */
     tempo = document.querySelector("#bpm").value;
     Tone.Transport.bpm.value = tempo;
 
-    /* GANANCIA */
+    /* GAIN */
     ganancia = parseFloat(document.querySelector("#gain").value);
     gain.gain.rampTo(ganancia);
 }
