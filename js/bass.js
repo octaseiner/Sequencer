@@ -18,8 +18,8 @@ $("#bassParameters").prepend(`
         <span id="delayBassVal">0</span>
     </div>
     <div class="parInstButtons">
-        <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
-        <button id="soloBass" class="botonBass buttonAnim" data-playing="false">Solo</button>
+        <label class="check"> <input id="muteBass" type="checkbox"><span id="spanMuteBass" class="font buttonAnim soloMuteBass">Mute</span> </label> 
+        <label class="check"> <input id="soloBass" type="checkbox"><span id="spanSoloBass" class="font buttonAnim soloMuteBass">Solo</span> </label> 
         <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>
     </div>
 `);
@@ -140,20 +140,20 @@ $("#soloBass").on("click", function() {
 
 
     if (boolSoloBass == false) {
-        soloBass.innerText = "Solo";
-        muteDrums.innerText = "Mute";
-        muteSynth.innerText = "Mute";
-        muteChords.innerText = "Mute";
+        $("#soloBass").addClass("inputBackground");
+        spanMuteDrums.innerText = "Mute";
+        spanMuteSynth.innerText = "Mute";
+        spanMuteChords.innerText = "Mute";
         drumsVol.mute = !(drumsVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);
     }
 
     else if (boolSoloBass == true) {
-        soloBass.innerText = "All"
-        muteDrums.innerText = "Unmute";
-        muteSynth.innerText = "Unmute";
-        muteChords.innerText = "Unmute";
+        $("#soloBass").removeClass("inputBackground");
+        spanMuteDrums.innerText = "Unmute";
+        spanMuteSynth.innerText = "Unmute";
+        spanMuteChords.innerText = "Unmute";
         drumsVol.mute = !(drumsVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);

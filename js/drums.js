@@ -19,8 +19,8 @@ $("#drumsParameters").prepend(`
     <span id="delayDrumsVal">0</span>
 </div>
 <div class="parInstButtons">
-    <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
-    <button id="soloDrums" class="botonDrums buttonAnim" data-playing="false">Solo</button>
+    <label class="check"> <input id="muteDrums" type="checkbox"><span id="spanMuteDrums" class="font buttonAnim soloMuteDrums">Mute</span> </label> 
+    <label class="check"> <input id="soloDrums" type="checkbox"><span id="spanSoloDrums" class="font buttonAnim soloMuteDrums">Solo</span> </label> 
     <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
 </div>
 `);
@@ -124,6 +124,7 @@ $("#muteDrums").on("click", function() {
 
 /* BUTTON SOLO */
 const soloDrums = document.querySelector('#soloDrums');
+const spanSoloDrums = document.querySelector('#spanSoloDrums');
 let boolSoloDrums = false;
 
 $("#soloDrums").on("click", function() {
@@ -132,20 +133,21 @@ $("#soloDrums").on("click", function() {
 
 
     if (boolSoloDrums == false) {
-        soloDrums.innerText = "Solo";
-        muteBass.innerText = "Mute";
-        muteSynth.innerText = "Mute";
-        muteChords.innerText = "Mute";
+        $("#soloDrums").addClass("inputBackground");
+        spanMuteBass.innerText = "Mute";
+        spanMuteSynth.innerText = "span";
+        spanMuteChords.innerText = "Mute";
         bassVol.mute = !(bassVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);
     }
 
     else if (boolSoloDrums == true) {
-        soloDrums.innerText = "All"
-        muteBass.innerText = "Unmute";
-        muteSynth.innerText = "Unmute";
-        muteChords.innerText = "Unmute";
+        $("#soloDrums").removeClass("inputBackground");
+        $("#muteBass").addClass("inputBackground");
+        spanMuteBass.innerText = "Unmute";
+        spanMuteSynth.innerText = "Unmute";
+        spanMuteChords.innerText = "Unmute";
         bassVol.mute = !(bassVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);
