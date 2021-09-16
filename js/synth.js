@@ -240,7 +240,7 @@ $("#botonClearSynth").on('click', function () {
 
 
 
-/* LOOP FUNCTION - CURRENT INPUT MARKED*/
+/* LOOP FUNCTION - ALL INSTRUMENTS CURRENT INPUT MARKED*/
 function repeatSynth(time) {
     let stepSynth = indexSynth % 32;
     for (let i = 0; i < $rowsSynth.length; i++) {
@@ -248,8 +248,9 @@ function repeatSynth(time) {
             noteSynth = notesSynth[i],
             $row = $rowsSynth[i],
             $input = $row.querySelector(`input:nth-child(${stepSynth + 1})`);
-            $(`input[type=checkbox]:nth-child(${stepSynth + 2})`).addClass("snow");
-            $(`input[type=checkbox]:nth-child(${stepSynth + 1})`).removeClass("snow");
+            $(`input[type=checkbox]:nth-child(${stepSynth + 1})`).addClass("snow");
+            $(`input[type=checkbox]:nth-child(${stepSynth})`).removeClass("snow");
+            $(`input[type=checkbox]:nth-child(${stepSynth + 32})`).removeClass("snow");
         if ($input.checked) synth.triggerAttackRelease(noteSynth, '8n', time);
     }
     indexSynth++;

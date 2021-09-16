@@ -47,17 +47,28 @@ body {
                     color: snow;
                 }
             }
+
+            // section.metronomo {
+            //     border-right: 1px solid #0a0;
+            // }
     
             section#playStop {
-                width: 450px;
+                width: 350px;
                 height: 40px;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
+                border-left: 2px solid #0a0;
+                margin-left: 20px;
             }
 
             section#scales {
-                width: 200px;
+                width: 150px;
+                padding-left: 5px;
+            }
+
+            section#apply {
+                width: auto;
             }
 
             section.card {
@@ -67,7 +78,6 @@ body {
                 min-width: 0;
                 word-wrap: break-word;
                 background-color: transparent;
-                padding-left: 20px;
                 border-left: 2px solid #0a0;
                 margin-left: 10px;
             
@@ -270,9 +280,7 @@ section.instrument {
     margin-left: 50px;
 }
 
-section.metronomo {
-    border-right: 2px solid #0a0;
-}
+
 
 
 

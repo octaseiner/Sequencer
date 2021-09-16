@@ -39,13 +39,18 @@ body {
         body header div section span {
           color: snow; }
       body header div section#playStop {
-        width: 450px;
+        width: 350px;
         height: 40px;
         display: flex;
         flex-direction: row;
-        justify-content: space-around; }
+        justify-content: space-around;
+        border-left: 2px solid #0a0;
+        margin-left: 20px; }
       body header div section#scales {
-        width: 200px; }
+        width: 150px;
+        padding-left: 5px; }
+      body header div section#apply {
+        width: auto; }
       body header div section.card {
         position: relative;
         display: flex;
@@ -53,7 +58,6 @@ body {
         min-width: 0;
         word-wrap: break-word;
         background-color: transparent;
-        padding-left: 20px;
         border-left: 2px solid #0a0;
         margin-left: 10px; }
         body header div section.card label {
@@ -182,9 +186,6 @@ div#instNameToogle {
 section.instrument {
   height: 300px;
   margin-left: 50px; }
-
-section.metronomo {
-  border-right: 2px solid #0a0; }
 
 /* --------- MARGIN INPUTS --------- */
 .marginR {
