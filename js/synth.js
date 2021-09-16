@@ -18,7 +18,6 @@ $("#synthParameters").prepend(`
         <span id="delaySynthVal">0</span>
     </div>
     <div class="parInstButtons">
-        <input type="submit" class="botonSynth buttonAnim" name="envio" value="Apply" id="enviarParSynth">
         <button id="muteSynth" class="botonSynth buttonAnim" data-playing="false">Mute</button>
         <button id="soloSynth" class="botonSynth buttonAnim" data-playing="false">Solo</button>
         <button id="botonClearSynth" class="botonSynth buttonAnim" data-playing="false">Clear</button>

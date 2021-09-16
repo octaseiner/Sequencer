@@ -18,7 +18,6 @@ $("#bassParameters").prepend(`
         <span id="delayBassVal">0</span>
     </div>
     <div class="parInstButtons">
-        <input type="submit" class="botonBass buttonAnim" name="envio" value="Apply" id="enviarParBass">
         <button id="muteBass" class="botonBass buttonAnim" data-playing="false">Mute</button>
         <button id="soloBass" class="botonBass buttonAnim" data-playing="false">Solo</button>
         <button id="botonClearBass" class="botonBass buttonAnim" data-playing="false">Clear</button>

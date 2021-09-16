@@ -19,7 +19,6 @@ $("#chordsParameters").prepend(`
         <span id="delayChordsVal">0</span>
     </div>
     <div class="parInstButtons">
-        <input type="submit" class="botonChords buttonAnim" name="envio" value="Apply" id="enviarParChords">
         <button id="muteChords" class="botonChords buttonAnim" data-playing="false">Mute</button>
         <button id="soloChords" class="botonChords buttonAnim" data-playing="false">Solo</button>
         <button id="botonClearChords" class="botonChords buttonAnim" data-playing="false">Clear</button>

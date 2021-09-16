@@ -28,7 +28,7 @@ gainControl.addEventListener('input', function(e) {
 
 
 
-    /* APPLY PARAMETERS */
+/* APPLY PARAMETERS */
 let botonPar = document.querySelector("#enviarPar");
 botonPar.addEventListener("click", cambioPar);
     

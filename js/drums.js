@@ -19,7 +19,6 @@ $("#drumsParameters").prepend(`
     <span id="delayDrumsVal">0</span>
 </div>
 <div class="parInstButtons">
-    <input type="submit" class="botonDrums buttonAnim" name="envio" value="Apply" id="enviarParDrums">
     <button id="muteDrums" class="botonDrums buttonAnim" data-playing="false">Mute</button>
     <button id="soloDrums" class="botonDrums buttonAnim" data-playing="false">Solo</button>
     <button id="botonClearDrums" class="botonDrums buttonAnim" data-playing="false">Clear</button>
