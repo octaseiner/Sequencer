@@ -39,11 +39,13 @@ body {
         body header div section span {
           color: snow; }
       body header div section#playStop {
-        width: 350px;
+        width: 450px;
         height: 40px;
         display: flex;
         flex-direction: row;
         justify-content: space-around; }
+      body header div section#scales {
+        width: 200px; }
       body header div section.card {
         position: relative;
         display: flex;

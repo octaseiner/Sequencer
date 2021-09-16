@@ -46,28 +46,16 @@ $("#botonClearAll").on('click', function () {
 
 /* RESET ALL */
 $("#botonResetAll").on("click", function() {
-
     location.reload();
-
-//     /* CLEAR ALL */
-//     document.querySelectorAll('input[type="checkbox"]')
-//     .forEach(inputCheck => inputCheck.checked = false);
-
-//     /* BPM */
-//     tempo = document.querySelector("#bpm").value;
-//     Tone.Transport.bpm.value = 120;
-//     bpmValor.innerText = 120;
-
-//     /* GAIN GENERAL */
-//     ganancia = parseFloat(document.querySelector("#gain").value);
-//     gain.gain.rampTo(1);
-//     gainValor.innerText = 1;
 });
 
 
 
 /* RESTART */
-const clock = new Tone.Clock();
 $("#botonRestart").on("click", function() {
-    clock.stop("+1");
-});
+    $(`input`).removeClass("snow");
+    indexSynth = 0;
+    indexBass = 0;
+    indexDrums = 0;
+    indexChords = 0;
+})
