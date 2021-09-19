@@ -282,12 +282,6 @@ input[class="inputChords marginR"], input[class="inputSynth marginR"], input[cla
     opacity: 0;
     transform: scale(1); } }
 
-.inputBackground::after {
-  background-color: #0a0;
-  color: #1a1a1a;
-  width: 500px;
-  box-shadow: 0 0 40px 40px #0a0 inset; }
-
 /* CURRENT INPUT */
 .snow {
   border: solid snow;

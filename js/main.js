@@ -10,13 +10,13 @@ document.documentElement.addEventListener('mousedown', () => {
 /* PLAY - STOP BUTTON */
 
 const play = document.querySelector('#botonPlay');
-let bool = false;
+let boolPlay = false;
 
 $("#botonPlay").on("click", function () {
 
-    bool = !bool;
+    boolPlay = !boolPlay;
 
-    if (bool == true) {
+    if (boolPlay == true) {
         Tone.Transport.start();
 
         $('#repro').append("<p id='reproduciendo'>Reproduciendo...</p>").css({"color": "snow"});
@@ -26,7 +26,7 @@ $("#botonPlay").on("click", function () {
         play.innerText = "Stop";
     }
 
-    else if (bool == false) {
+    else if (boolPlay == false) {
         Tone.Transport.stop();
         $('#reproduciendo').remove();
 
@@ -53,9 +53,22 @@ $("#botonResetAll").on("click", function() {
 
 /* RESTART */
 $("#botonRestart").on("click", function() {
+    Tone.Transport.stop();
+    
+    boolPlay = false;
+
+    play.innerText = "Play";
+
     $(`input`).removeClass("snow");
     indexSynth = 0;
     indexBass = 0;
     indexDrums = 0;
     indexChords = 0;
+
 })
+
+
+
+
+
+

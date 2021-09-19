@@ -1,6 +1,42 @@
-{
+[
     
-    "escale": ["Do Mayor"],
-    "notes": ["Do, Re, Mi, Fa, Sol, La, Si"]
-    
-}
+    {
+        "name": "Do Major",
+
+        "firstNote": "Do",
+        "secondNote": "Re",
+        "thirdNote": "Mi",
+        "fourthNote": "Fa",
+        "fifthNote": "Sol",
+        "sixthNote": "La",
+        "seventhNote": "Si",
+
+        "firstChord": "Do Maj",
+        "secondChord": "Re Min",
+        "thirdChord": "Mi Min",
+        "fourthChord": "Fa Maj",
+        "fifthChord": "Sol Maj",
+        "sixthChord": "La Min",
+        "seventhChord": "Si Min-5"
+    },
+
+    {
+            "name": "Do Minor",
+
+            "firstNote": "Do",
+            "secondNote": "Re",
+            "thirdNote": "Mi B",
+            "fourthNote": "Fa",
+            "fifthNote": "Sol",
+            "sixthNote": "La b",
+            "seventhNote": "Si b",
+
+            "firstChord": "Do Min",
+            "secondChord": "Re Min-5",
+            "thirdChord": "Mi b Maj",
+            "fourthChord": "Fa Min",
+            "fifthChord": "Sol b Min",
+            "sixthChord": "La b Maj",
+            "seventhChord": "Si Maj"
+    }
+]

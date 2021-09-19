@@ -94,9 +94,7 @@ bajos[7].oscillator.type = 'sine';
 Tone.Transport.scheduleRepeat(repeatBass,'16n');
 
 /* GET ALL BASS INPUTS - ASSIGN INPUTS NOTES */
-const $rowsBass = document.body.querySelectorAll('section#bass > div > div > div'),
-    notesBass = ['C3', 'B2', 'A2', 'G2', 'F2', 'E2', 'D2', 'C2'];
-let indexBass = 0;
+const $rowsBass = document.body.querySelectorAll('section#bass > div > div > div');
 
 
 
@@ -116,22 +114,41 @@ volBassControl.addEventListener('input', function(e) {
 }, false);
 
 /* BUTTON MUTE */
-const muteBass = document.querySelector('#muteBass')
 $("#muteBass").on("click", function() {
+
     bassVol.mute = !(bassVol.mute);
 
     if (bassVol.mute == false) {
-        muteBass.innerText = "Mute";
+        /* ABLE ALL SOLO BUTTONS */
+        $("#soloBass").prop("disabled", false);
+        $("#soloDrums").prop("disabled", false);
+        $("#soloSynth").prop("disabled", false);
+        $("#soloChords").prop("disabled", false);
+
+        /* ADD CLASS TO ALL SOLO BUTTONS */
+        $("#spanSoloSynth").addClass("buttonAnim");
+        $("#spanSoloBass").addClass("buttonAnim");
+        $("#spanSoloChords").addClass("buttonAnim");
+        $("#spanSoloDrums").addClass("buttonAnim");
     }
 
     else if (bassVol.mute == true) {
-        muteBass.innerText = "Unmute";
+        /* DISABLE ALL SOLO BUTTONS */
+        $("#soloBass").prop("disabled", true);
+        $("#soloDrums").prop("disabled", true);
+        $("#soloSynth").prop("disabled", true);
+        $("#soloChords").prop("disabled", true);
+
+        /* REMOVE CLASS TO ALL SOLO BUTTONS */
+        $("#spanSoloSynth").removeClass("buttonAnim");
+        $("#spanSoloBass").removeClass("buttonAnim");
+        $("#spanSoloChords").removeClass("buttonAnim");
+        $("#spanSoloDrums").removeClass("buttonAnim");
     }   
 });
 
 
 /* BUTTON SOLO */
-const soloBass = document.querySelector('#soloBass');
 let boolSoloBass = false;
 
 $("#soloBass").on("click", function() {
@@ -140,29 +157,68 @@ $("#soloBass").on("click", function() {
 
 
     if (boolSoloBass == false) {
-        $("#soloBass").addClass("inputBackground");
-        spanMuteDrums.innerText = "Mute";
-        spanMuteSynth.innerText = "Mute";
-        spanMuteChords.innerText = "Mute";
+        /* DISABLE DRUMS, SYNTH AND CHORD SOLO BUTTONS */
+        $("#soloDrums").prop("disabled", false);
+        $("#soloSynth").prop("disabled", false);
+        $("#soloChords").prop("disabled", false);
+
+        /* DISABLE ALL MUTE BOTONS */
+        $("#muteDrums").prop("disabled", false);
+        $("#muteBass").prop("disabled", false);
+        $("#muteChords").prop("disabled", false);
+        $("#muteSynth").prop("disabled", false);
+
+        /* UNCHECK DRUMS, SYNTH AND CHORDS BUTTONS */
+        $("#muteDrums").prop("checked", false);
+        $("#muteSynth").prop("checked", false);
+        $("#muteChords").prop("checked", false);
+
+        /* ADD CLASS TO ALL SOLO BOTONS */
+        $("#spanSoloSynth").addClass("buttonAnim");
+        $("#spanSoloBass").addClass("buttonAnim");
+        $("#spanSoloChords").addClass("buttonAnim");
+        $("#spanSoloDrums").addClass("buttonAnim");
+
+        /* ADD CLASS TO BASS MUTE BUTTON */
+        $("#spanMuteBass").addClass("buttonAnim");
+
+        /* CHANGE DRUMS, SYNTH AND CHORDS MUTE BUTTON VALUE */
         drumsVol.mute = !(drumsVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);
     }
 
     else if (boolSoloBass == true) {
-        $("#soloBass").removeClass("inputBackground");
-        spanMuteDrums.innerText = "Unmute";
-        spanMuteSynth.innerText = "Unmute";
-        spanMuteChords.innerText = "Unmute";
+        /* ABLE DRUMS, SYNTH AND CHORD SOLO BUTTONS */
+        $("#soloDrums").prop("disabled", true);
+        $("#soloSynth").prop("disabled", true);
+        $("#soloChords").prop("disabled", true);
+
+        /* ABLE ALL MUTE BOTONS */
+        $("#muteDrums").prop("disabled", true);
+        $("#muteBass").prop("disabled", true);
+        $("#muteChords").prop("disabled", true);
+        $("#muteSynth").prop("disabled", true);
+
+        /* CHECK DRUMS, SYNTH AND CHORDS BUTTONS */
+        $("#muteDrums").prop("checked", true);
+        $("#muteSynth").prop("checked", true);
+        $("#muteChords").prop("checked", true);
+
+        /* REMOVE CLASS TO ALL SOLO BOTONS */
+        $("#spanSoloSynth").removeClass("buttonAnim");
+        $("#spanSoloBass").removeClass("buttonAnim");
+        $("#spanSoloChords").removeClass("buttonAnim");
+        $("#spanSoloDrums").removeClass("buttonAnim");
+
+        /* REMOVE CLASS TO BASS MUTE BUTTON */
+        $("#spanMuteBass").removeClass("buttonAnim");
+        
+        /* CHANGE DRUMS, SYNTH AND CHORDS MUTE BUTTON VALUE */
         drumsVol.mute = !(drumsVol.mute);
         synthVol.mute = !(synthVol.mute);
         chordsVol.mute = !(chordsVol.mute);
     }   
-
-    if (bassVol.mute == true) {
-        bassVol.mute = !(bassVol.mute)
-        muteBass.innerText = "Mute";
-    }
 });
 
 
@@ -236,6 +292,8 @@ $("#botonClearBass").on('click', function () {
 
 
 /* LOOP FUNCTION */
+let indexBass = 0;
+
 function repeatBass(time) {
 let stepBass = indexBass % 32;
     for (let i = 0; i < $rowsBass.length; i++) {
