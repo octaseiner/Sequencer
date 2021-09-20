@@ -26,7 +26,6 @@ $("#drumsParameters").prepend(`
 
 
 /* SHOW PARAMETERS */
-
 const toogleDrums = document.querySelector('#toogleDrums');
 let boolToogleDrums = false;
 
@@ -43,6 +42,7 @@ $("#toogleDrums").on("click", function () {
         toogleDrums.innerText = "▼";
     }   
 })
+
 
 
 

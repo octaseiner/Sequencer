@@ -1,42 +1,46 @@
-[
-    
-    {
-        "name": "Do Major",
 
-        "firstNote": "Do",
-        "secondNote": "Re",
-        "thirdNote": "Mi",
-        "fourthNote": "Fa",
-        "fifthNote": "Sol",
-        "sixthNote": "La",
-        "seventhNote": "Si",
+{
+            "nameMaj": "Do Major",
 
-        "firstChord": "Do Maj",
-        "secondChord": "Re Min",
-        "thirdChord": "Mi Min",
-        "fourthChord": "Fa Maj",
-        "fifthChord": "Sol Maj",
-        "sixthChord": "La Min",
-        "seventhChord": "Si Min-5"
-    },
+            "firstNoteMaj": "Do",
+            "secondNoteMaj": "Re",
+            "thirdNoteMaj": "Mi",
+            "fourthNoteMaj": "Fa",
+            "fifthNoteMaj": "Sol",
+            "sixthNoteMaj": "La",
+            "seventhNoteMaj": "Si",
+            "eighthNoteMaj": "Do",
 
-    {
-            "name": "Do Minor",
+            "firstChordMaj": "Do Maj",
+            "secondChordMaj": "Re Min",
+            "thirdChordMaj": "Mi Min",
+            "fourthChordMaj": "Fa Maj",
+            "fifthChordMaj": "Sol Maj",
+            "sixthChordMaj": "La Min",
+            "seventhChordMaj": "Si Min-5",
+            "eighthChordMaj": "Do Maj",
 
-            "firstNote": "Do",
-            "secondNote": "Re",
-            "thirdNote": "Mi B",
-            "fourthNote": "Fa",
-            "fifthNote": "Sol",
-            "sixthNote": "La b",
-            "seventhNote": "Si b",
 
-            "firstChord": "Do Min",
-            "secondChord": "Re Min-5",
-            "thirdChord": "Mi b Maj",
-            "fourthChord": "Fa Min",
-            "fifthChord": "Sol b Min",
-            "sixthChord": "La b Maj",
-            "seventhChord": "Si Maj"
-    }
-]
+
+            
+            "nameMin": "Do Minor",
+
+            "firstNoteMin": "Do",
+            "secondNoteMin": "Re",
+            "thirdNoteMin": "Mi B",
+            "fourthNoteMin": "Fa",
+            "fifthNoteMin": "Sol",
+            "sixthNoteMin": "La b",
+            "seventhNoteMin": "Si b",
+            "eighthNoteMin": "Do",
+
+            "firstChordMin": "Do Min",
+            "secondChordMin": "Re Min-5",
+            "thirdChordMin": "Mi b Maj",
+            "fourthChordMin": "Fa Min",
+            "fifthChordMin": "Sol b Min",
+            "sixthChordMin": "La b Maj",
+            "seventhChordMin": "Si Maj",
+            "eighthChordMin": "Do Min"
+
+}

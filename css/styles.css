@@ -145,14 +145,6 @@ body {
             display: flex;
             flex-direction: row;
             align-items: center; }
-    body main div#aside {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-left: 1px solid #0a0;
-      margin: 30px 50px 0px 50px; }
   body footer p {
     color: #0a0;
     filter: hue-rotate(20deg); }
